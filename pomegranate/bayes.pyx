@@ -261,6 +261,7 @@ cdef class BayesModel(Model):
                     with gil:
                         X_ndarray = numpy.asarray(X[i])
                         X_ptr = <double*> X_ndarray.data
+
                     logp[i] = self._vl_log_probability(X_ptr, n)
             else:
                 self._log_probability(X_ptr, logp, n)
