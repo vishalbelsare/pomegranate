@@ -8,12 +8,6 @@
 	:width: 300px
 
 |
- 
-.. image:: https://travis-ci.org/jmschrei/pomegranate.svg?branch=master
-   :target: https://travis-ci.org/jmschrei/pomegranate
-
-.. image:: https://ci.appveyor.com/api/projects/status/github/jmschrei/pomegranate?svg=True
-   :target: https://ci.appveyor.com/project/JacobSchreiber/pomegranate/branch/master
 
 .. image:: https://readthedocs.org/projects/pomegranate/badge/?version=latest
    :target: http://pomegranate.readthedocs.io/en/latest/?badge=latest
@@ -46,6 +40,7 @@ Contributions are eagerly accepted! If you would like to contribute a feature th
 
    self
    install.rst
+   api.rst
    CODE_OF_CONDUCT.rst
    faq.rst
    whats_new.rst
@@ -55,25 +50,20 @@ Contributions are eagerly accepted! If you would like to contribute a feature th
    :hidden:
    :caption: Features
 
-   api.rst
-   ooc.rst
-   io.rst
-   semisupervised.rst
-   parallelism.rst
-   gpu.rst
-   nan.rst
-   callbacks.rst
+   tutorials/C_Feature_Tutorial_1_GPU_Usage.ipynb
+   tutorials/C_Feature_Tutorial_2_Mixed_Precision_and_DataTypes.ipynb
+   tutorials/C_Feature_Tutorial_3_Out_Of_Core_Learning.ipynb
+   tutorials/C_Feature_Tutorial_4_Priors_and_Semi-supervised_Learning.ipynb
 
 .. toctree::
    :maxdepth: 1
    :hidden:
    :caption: Models
 
-   Distributions.rst
-   GeneralMixtureModel.rst
-   HiddenMarkovModel.rst
-   NaiveBayes.rst
-   MarkovChain.rst
-   BayesianNetwork.rst
-   MarkovNetwork.rst
-   FactorGraph.rst
+   tutorials/B_Model_Tutorial_1_Distributions.ipynb
+   tutorials/B_Model_Tutorial_2_General_Mixture_Models.ipynb
+   tutorials/B_Model_Tutorial_3_Bayes_Classifier.ipynb
+   tutorials/B_Model_Tutorial_4_Hidden_Markov_Models.ipynb
+   tutorials/B_Model_Tutorial_5_Markov_Chains.ipynb
+   tutorials/B_Model_Tutorial_6_Bayesian_Networks.ipynb
+   tutorials/B_Model_Tutorial_7_Factor_Graphs.ipynb

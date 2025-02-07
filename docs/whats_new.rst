@@ -5,6 +5,110 @@
 Release History
 ===============
 
+Version 1.1.1
+==============
+
+
+Highlights
+----------
+
+	- Fixed an issue with categorical distributions being used on the GPU
+
+
+Version 1.0.4
+==============
+
+
+Highlights
+----------
+
+	- Added a feature-complete implementation of `.viterbi` to `DenseHMM` and 
+	`SparseHMM`. Unfortunately, due to the lack of an efficient `scatter_argmax`
+	implementation in torch, the `SparseHMM` function is quite a bit slower than
+	it could be. Hopefully this will be fixed in the future.
+	- Fixed a bug where `max_iter` and `tol` were not being passed into the
+	underlying `FactorGraph` when creating a `BayesianNetwork`.
+	- Changed `BayesianNetwork.sample` to run `self.d+1` times to cover an edge
+	case that might arise.
+	- Fixed `.name` attribute of `StudentT` distribution
+	- Sampling with HMMs without fixed end probabilities should be fixed
+	- Incorporated link fix from @reachusama for Bayesian networks
+
+
+Version 1.0.4
+==============
+
+Highlights
+----------
+
+	- Fixed an issue with Markov Chains and ConditionalCategorical distributions
+	- Added more documentation to ConditionalCategorical distributions
+
+
+Version 1.0.3
+==============
+
+Highlights
+----------
+
+	- A fix to the 1.0.2 fix (thanks @savyajha)
+	- Docs API fix (thanks @FBruzzesi)
+	- GMM initialization sets prior based on weights (thanks @gerwang)
+	- Fixes normal distributions when covariance_type == 'sphere' (thanks @gerwang)
+	- Fixes an issue with MaskedTensor's being passed into categorical distributions
+
+
+Version 1.0.2
+==============
+
+Highlights
+----------
+
+	- A minor issue with Bayesian network structure learning has been patched by 
+	@savyajha (thank you!) where, when multiple shortest paths exist, the one
+	returned would be OS dependent. Now, all shortest paths are found and sorted
+	before return. 
+
+
+
+Version 1.0.0
+==============
+
+Highlights
+----------
+	- Minor bug fixed.
+
+
+Version 1.0.0
+==============
+
+Highlights
+----------
+
+	- This release marks a major milestone in the pomegranate saga. 
+	- The Cython backend has been replaced with a PyTorch backend. Goodbye weird installation issues and segfaults.
+	- The API has been changed in a way that is not back-compatible, hence an increment in the major version. These changes fix issues that have hampered development, made the user experience more difficult, or were just bad.
+	- This codebase is guarded by a comprehensive suite of >800 unit tests, calling assert statements several thousand times.
+
+
+Features
+--------
+	- GPU support has been added for all models and methods
+	- Mixed/half precision has been added for all models and methods (though the benefits seem mild to none...)
+	- Serialization is now handled by PyTorch, yielding more compact and efficient I/O
+	- Missing values are now supported through torch.masked.MaskedTensor objects
+	- Prior probabilities are now supported for all relevant models and methods and enable more comprehensive/flexible semi-supervised learning than before
+
+Models
+------
+	- All distributions are now multivariate by default, supporting speedups through batched operations
+	- Factor graphs are now supported as first-class citizens
+	- Hidden Markov models have been split into DenseHMM and SparseHMM models which differ in how the transition matrix is encoded, with DenseHMM objects being significantly faster
+	- NaiveBayes models have been removed
+	- MarkovNetworks models have been temporarily removed
+	- Constraint graphs have been temporarily removed
+
+
 Version 0.14.8
 ==============
 
@@ -165,7 +269,7 @@ HiddenMarkovModel
 Misc
 ----
 
-	- Unneccessary calls to memset have been removed, courtesy of @alexhenrie
+	- Unnecessary calls to memset have been removed, courtesy of @alexhenrie
 	- Checking for missing values has been slightly refactored to be cleaner, courtesy of @mareksmid-lucid
 	- Include the LICENSE file in MANIFEST.in and simplify a bit, courtesy of @toddrme2178
 	- Added in a robust from_json method that can be used to deserialize a JSON for any pomegranate model.
